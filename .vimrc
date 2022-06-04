@@ -9,6 +9,7 @@ Plug 'vim-python/python-syntax'
 Plug 'bling/vim-airline'
 Plug 'voldikss/vim-floaterm'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 :nmap <C-s> :w<CR>
