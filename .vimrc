@@ -7,11 +7,17 @@ Plug 'luochen1990/rainbow'
 Plug 'honza/vim-snippets'
 Plug 'vim-python/python-syntax'
 Plug 'bling/vim-airline'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
+let g:fzf_layout = { 'down':'40%' }
+
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-l> :Files ~<CR>
 inoremap { {<CR>}<Esc>ko
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
@@ -52,5 +58,6 @@ let g:UltiSnipsJumpBackwardTrigger="<S-b>"
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 set splitbelow
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 set clipboard=unnamed
-
