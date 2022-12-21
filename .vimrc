@@ -12,6 +12,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
+inoremap { {<CR>}<Esc>ko
+inoremap [ []<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+inoremap ( ()<Esc>i
 :nmap <C-s> :w<CR>
 :nmap _ <<
 :nmap - ^i<Tab><esc>
@@ -48,3 +53,4 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 set splitbelow
 set clipboard=unnamed
+
