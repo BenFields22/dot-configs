@@ -7,12 +7,19 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=~/cli_tools:$PATH
-export PATH="/Applications/CMake.app/Contents/bin":"$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-
+export PATH=~/cli_tools:$PATH
+export VULKAN_ROOT_LOCATION="$HOME/VulkanSDK"
+export VULKAN_SDK_VERSION="1.3.236.0"
+export VULKAN_SDK="$VULKAN_ROOT_LOCATION/$VULKAN_SDK_VERSION/macOS"
+export VK_ICD_FILENAMES="$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json"
+export VK_LAYER_PATH="$VULKAN_SDK/share/vulkan/explicit_layer.d"
+export PATH="$VULKAN_SDK/bin:$PATH"
+export PATH="/Applications/CMake.app/Contents/bin":"$PATH"
+export PATH="$HOME/go/bin/:$PATH"
+export TERM=xterm-256color
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -82,10 +89,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
       git
       zsh-autosuggestions
+      web-search
+      zsh-syntax-highlighting
    )
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -117,5 +125,28 @@ alias tk="tmux kill-session -t"
 alias tl="tmux ls"
 alias tat="tmux a -t"
 alias term="open -a Terminal ."
+alias f='source f_script'
+alias vim="nvim"
+alias fcd="source fcd_script"
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{node_modules/*,.git/*,site-packages/*}"'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/benfields/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/benfields/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/benfields/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/benfields/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
